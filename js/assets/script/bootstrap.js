@@ -1,4 +1,4 @@
-window.gLocalAssetContainer["_bootstrap"] = function(g) { (function(exports, require, module, __filename, __dirname) {
+window.gLocalAssetContainer["bootstrap"] = function(g) { (function(exports, require, module, __filename, __dirname) {
 const main_1 = require("./main");
 module.exports = (originalParam) => {
     const param = {};
