@@ -43,6 +43,9 @@
 		};
 		const app = initializeApp(firebaseConfig);
 		const database = getDatabase(app);
+		const url = new URL(window.location.href);
+		const domain = url.hostname;
+		const path = url.pathname.split('/').filter(Boolean);
 		let latestScore = 0;
 		let previousScore = 0;
 		function saveScoreToFirebase(name, password, score) {
@@ -111,6 +114,10 @@
 		}
 		if (name.match(/^\s+$/)) {
 			alert("名前には空白文字以外を入力してください。");
+			return;
+		}
+		if (domain !== "niconanashi.github.io" || path[0] !== "game1") {
+			alert("このドメインからは送信できません。");
 			return;
 		}
 		saveScoreToFirebase(name, password, score)
