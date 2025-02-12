@@ -7,7 +7,7 @@ function main(param) {
         // このシーンで利用するアセットのIDを列挙し、シーンに通知します
         assetIds: ["player", "shot", "se"]
     });
-    let time = 60; // 制限時間
+    let time = 10; // 制限時間
     if (param.sessionParameter.totalTimeLimit) {
         time = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
     }
@@ -94,6 +94,10 @@ function main(param) {
         });
         const updateHandler = () => {
             if (time <= 0) {
+            	(function(score) {//htmlにスコアを送る
+				    var event = new CustomEvent('scoreUpdate', { detail: score });
+				    window.dispatchEvent(event);
+				})(g.game.vars.gameState.score);
                 scene.onUpdate.remove(updateHandler); // カウントダウンを止めるためにこのイベントハンドラを削除します
             }
             // カウントダウン処理
