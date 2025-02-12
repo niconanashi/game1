@@ -8,9 +8,6 @@ function main(param) {
 		assetIds: ["player", "shot", "se"]
 	});
 	let time = 10; // 制限時間
-	if (param.sessionParameter.totalTimeLimit) {
-		time = param.sessionParameter.totalTimeLimit; // セッションパラメータで制限時間が指定されたらその値を使用します
-	}
 	// 市場コンテンツのランキングモードでは、g.game.vars.gameState.score の値をスコアとして扱います
 	g.game.vars.gameState = { score: 0 };
 	scene.onLoad.add(() => {
