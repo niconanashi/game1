@@ -104,16 +104,20 @@
 		document.getElementById('retryButton').style.display = 'block';
 	});
 	function submitScore() {
+		const submitButton = document.querySelector('#namePasswordForm button');
+		submitButton.disabled = true;
 		const name = document.getElementById('nameInput').value.trim();
 		const password = document.getElementById('passwordInput').value.trim();
 		const score = parseInt(document.getElementById('scoreDisplay').innerText.replace('スコア: ', ''), 10);
 		previousScore = latestScore;
 		if (name === "") {
 			alert("名前を入力してください。");
+			submitButton.disabled = false;
 			return;
 		}
 		if (name.match(/^\s+$/)) {
 			alert("名前には空白文字以外を入力してください。");
+			submitButton.disabled = false;
 			return;
 		}
 		if (domain !== "niconanashi.github.io" || path[0] !== "game1") {
